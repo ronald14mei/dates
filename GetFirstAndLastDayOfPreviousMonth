@@ -1,0 +1,26 @@
+# Get first day and last day of previous month
+
+# output =  FirstDay - The first date of the previous month
+#           LastDay - The last date of the previous month
+#
+# Example: if it is 01-02-2020 it wil return the values FirstDay=01012020 and LastDay=31012020
+#
+# last_day_of_prev_month = date.today().replace(day=1) - timedelta(days=1)
+#                          2020-02-25   2020-02-01     - 1 day = 2020-01-31
+
+# start_day_of_prev_month = date.today().replace(day=1) - timedelta(days=last_day_of_prev_month.day)
+#                          2020-02-25   2020-02-01     - 31 day = 2020-01-01
+#
+# FirstDay = start_day_of_prev_month.strftime('%d%m%Y')
+#            Convert 20-01-01 to 01012020
+#
+# LastDay = last_day_of_prev_month.strftime('%d%m%Y')
+#           Convert 20-01-31 to 31012020
+#
+from datetime import date, timedelta
+
+last_day_of_prev_month = date.today().replace(day=1) - timedelta(days=1)
+start_day_of_prev_month = date.today().replace(day=1) - timedelta(days=last_day_of_prev_month.day)
+
+FirstDay = start_day_of_prev_month.strftime('%d%m%Y')
+LastDay = last_day_of_prev_month.strftime('%d%m%Y')
